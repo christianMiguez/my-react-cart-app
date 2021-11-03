@@ -12,15 +12,17 @@ export const AppRouter = () => {
     const dispatch = useDispatch();
     
     useEffect( () => {
-        
-        getProducts( )
+
+        getProducts()
         .then( products => {
             
             dispatch(startLoadingProducts(products))
-                
-            })
+   
+            });
 
-            console.log('I Fire once');
+            
+
+        console.log('UseEffect fired from AppRouter.js');
 
     })
 

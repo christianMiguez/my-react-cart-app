@@ -4,6 +4,7 @@ import { useLocation } from 'react-router';
 import { ProductCard } from '../products/ProductCard';
 import { useForm } from '../hooks/useForm';
 import { getProductsByName } from '../../selectors/getProductsByName';
+import { useSelector } from 'react-redux';
 
 export const SearchScreen = ({history}) => {
 
@@ -16,8 +17,10 @@ export const SearchScreen = ({history}) => {
     });
     
     const { searchText } = formValues;
+
+    const {products} = useSelector(state => state.products);
     
-    const productsFiltered = useMemo(() => getProductsByName(query), [query]);
+    const productsFiltered = useMemo(() => getProductsByName(products, query), [products, query]);
 
     const handleSearch = (e) => {
         e.preventDefault()

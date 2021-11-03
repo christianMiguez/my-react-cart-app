@@ -15,5 +15,7 @@ export const types = {
 	productsFileUrl: '[Products] Updated image url',
 	productsDelete: '[Products] Delete note',
 	productsLogoutCleaning: '[Products] Logout Cleaning',
+
+	cartAddNew: '[Cart] Item added'
 	
 }

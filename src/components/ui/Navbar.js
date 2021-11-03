@@ -43,6 +43,15 @@ export const Navbar = () => {
                     >
                         Cart
                     </NavLink>
+
+                    <NavLink 
+                        activeClassName="active"
+                        className="nav-item nav-link" 
+                        exact
+                        to="/checkout"
+                    >
+                        Checkout
+                    </NavLink>
                 </div>
             </div>
 
