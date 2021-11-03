@@ -1,14 +1,16 @@
 import { types } from "../types/types";
+import { getCart } from "../helpers/getCart"
+
 
 const initialState = {
-	cart: []
+	cart: getCart()
 }
 
 export const cartReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 		
-        case types.productsAddNew:
+        case types.cartAddNew:
             return {
                 ...state,
                 cart: [action.payload, ...state.cart]

@@ -10,10 +10,11 @@ export const getProducts = async() => {
         const url = process.env.REACT_APP_API_URL;
         const resp = await fetch( url, { 
             method: 'GET', 
-            auth: {
-                username: process.env.REACT_APP_MP_PRIVATE_KEY, //public
-                password: process.env.REACT_APP_MP_PUBLIC_KEY //secret
-            }} );
+            // auth: {
+            //     username: process.env.REACT_APP_WOO_PRIVATE_KEY, //public
+            //     password: process.env.REACT_APP_WOO_PUBLIC_KEY //secret
+            // }
+            } );
 
         const data = await resp.json();
 

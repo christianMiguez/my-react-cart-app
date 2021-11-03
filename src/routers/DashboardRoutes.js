@@ -5,6 +5,7 @@ import { Navbar } from '../components/ui/Navbar'
 import { SearchScreen } from '../components/search/SearchScreen'
 import { ProductList } from '../components/products/ProductList'
 import { CartScreen } from '../components/cart/CartScreen'
+import { CheckoutScreen } from '../components/checkout/CheckoutScreen'
 
 
 export const DashboardRoutes = () => {
@@ -19,6 +20,7 @@ export const DashboardRoutes = () => {
                         <Route exact path="/product/:productid" component={ ProductScreen }  />
                         <Route exact path="/search" component={ SearchScreen } />
                         <Route exact path="/cart" component={ CartScreen } />
+                        <Route exact path="/checkout" component={ CheckoutScreen } />
 
                         <Redirect to='/home' />
                     </Switch>

@@ -1,6 +1,4 @@
-const products = []
-
-export const getProductsByName = ( name = '' ) => {
+export const getProductsByName = (products,  name = '' ) => {
 
     if ( name === '' ) {
         return []

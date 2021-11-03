@@ -11,8 +11,4 @@ export const setProducts = (products) => ({
 	payload: products
 })
 
-export const addItemToCart = (product) => ({
-	type: types.productsAddNew,
-	payload: { ...product}
-})
 
