@@ -4,7 +4,6 @@ import { Redirect } from 'react-router';
 import { useParams } from 'react-router-dom'
 import { addItemToCart } from '../../actions/cart';
 import { getProductsById } from '../../selectors/getProductById';
-import {useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 export const ProductScreen = ({history}) => {
@@ -42,24 +41,60 @@ export const ProductScreen = ({history}) => {
     }
 
     const handlePayment = () => {
-        console.log('Pay button clicked')
+        //obtain a mercadopago preference for using with CHECKOUT-PRO
+        fetch('https://serendipia.uy/mercadopago-server/', {    
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'data='+ JSON.stringify(current)
+        }).then(res => res.json()).then(dat => {
+
+            if (dat) {
+                console.log('dat: ', dat)
+                const loadScript = (url, handleScriptLoad) => {
+                    let script = document.createElement('script');
+                    script.type = 'text/javascript';
+                
+                    if (script.readyState) {
+                      script.onreadystatechange = () => {
+                        if (
+                          script.readyState === 'loaded' ||
+                          script.readyState === 'complete'
+                        ) {
+                          script.onreadystatechange = null;
+                          handleScriptLoad();
+                        }
+                      };
+                    } else {
+                      script.onload = () => handleScriptLoad();
+                    }
+                    script.src = url;
+                    document.getElementsByTagName('head')[0].appendChild(script);
+                  };
+                
+                  const handleScriptLoad = () => {
+                    const mp = new window.MercadoPago('APP_USR-7492c649-794a-4051-b4e0-9d31f2d80c18', {
+                      locale: 'es-AR'
+                    });
+                    mp.checkout({
+                      preference: {
+                        id: dat
+                      },
+                      autoOpen: true
+                    });
+                  };
+                
+                  loadScript('https://sdk.mercadopago.com/js/v2', handleScriptLoad);
+              }
+              
+        
+        
+        })
     }
 
-    useEffect(() => {
-        console.log(JSON.stringify(current))
-        // obtain a mercadopago preference for using with CHECKOUT-PRO
-        // fetch('https://serendipia.uy/mercadopago-server/', {    
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/x-www-form-urlencoded'
-        //     },
-        //     body: 'data='+ JSON.stringify(current)
-        // }).then(res => res.json()).then(dat => console.log(dat));
-        
-    })
 
-    
 
     if(!current) {
         return <Redirect to='/' />
@@ -81,7 +116,7 @@ export const ProductScreen = ({history}) => {
                 <button onClick={ handleAddCart } className="btn btn-success d-block mb-4">ADD TO CART</button>
                 <button onClick={ handleReturn } className="btn btn-secondary">Return</button>
                 <button onClick={ handlePayment } className="btn btn-secondary">PAY </button>
-                <div id="button-checkout"></div> 
+                <div className="button-checkout"></div> 
             </div>
         </>
     )
