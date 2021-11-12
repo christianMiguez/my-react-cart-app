@@ -1,9 +1,11 @@
-
-import { types } from "../types/types" 
-
+import { types } from "../types/types";
 
 export const addItemToCart = (cartItem) => ({
 	type: types.cartAddNew,
-	payload: { ...cartItem}
-})
+	payload: { ...cartItem },
+});
 
+export const cartRemoveItem = (id) => ({
+	type: types.cartRemoveItem,
+	payload: id,
+});
