@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+		<nav className="navbar navbar-expand-sm navbar-light bg-white">
 			<div className="container">
 				<Link className="navbar-brand" to="/">
-					<img src="../../images/logo.svg" alt="logo" width="100" />
+					<img src="../../images/logo.jpg" alt="logo" width="90" />
 				</Link>
 
 				<div className="navbar-collapse">
@@ -17,16 +17,28 @@ export const Navbar = () => {
 							exact
 							to="/home"
 						>
-							Home
+							TODOS LOS PRODUCTOS
 						</NavLink>
+					</div>
+				</div>
 
+				<div className="navbar-collapse collapse w-100 order-3 dual-collapse2 ">
+					<ul className="navbar-nav ml-auto">
+						<NavLink
+							activeClassName="active"
+							className="nav-item nav-link d-none"
+							exact
+							to="/login"
+						>
+							Salir
+						</NavLink>
 						<NavLink
 							activeClassName="active"
 							className="nav-item nav-link"
 							exact
 							to="/search"
 						>
-							Search
+							BUSCAR ALGO
 						</NavLink>
 
 						<NavLink
@@ -35,7 +47,7 @@ export const Navbar = () => {
 							exact
 							to="/cart"
 						>
-							Cart
+							MI CARRITO
 						</NavLink>
 
 						<NavLink
@@ -44,20 +56,7 @@ export const Navbar = () => {
 							exact
 							to="/checkout"
 						>
-							Checkout
-						</NavLink>
-					</div>
-				</div>
-
-				<div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-					<ul className="navbar-nav ml-auto">
-						<NavLink
-							activeClassName="active"
-							className="nav-item nav-link"
-							exact
-							to="/login"
-						>
-							Salir
+							PAGAR
 						</NavLink>
 					</ul>
 				</div>

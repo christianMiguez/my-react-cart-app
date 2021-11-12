@@ -112,28 +112,30 @@ export const ProductScreen = ({ history }) => {
 				<div className="col-7">
 					<h3>{current.title}</h3>
 
-					<h5 className="mt-4">Price</h5>
-					<p className="mb-4">{current.price}</p>
+					<h5 className="mt-4">Precio</h5>
+					<p className="mb-4">$ {current.price}</p>
 
 					<button
-						onClick={handleAddCart}
-						className="btn btn-success d-block mb-4"
-					>
-						ADD TO CART
-					</button>
-					<button
-						onClick={handleReturn}
-						className="btn btn-secondary"
-					>
-						Return
-					</button>
-					<button
 						onClick={handlePayment}
-						className="btn btn-secondary"
+						className="btn btn-xl btn-success d-block mb-5"
 					>
-						PAY{" "}
+						COMPRAR
 					</button>
 					<div className="button-checkout"></div>
+
+					{/* <button
+						onClick={handleAddCart}
+						className="btn btn-xl btn-info d-block mb-5 d-none"
+					>
+						Agregar al carrito
+					</button> */}
+
+					<button
+						onClick={handleReturn}
+						className="btn btn-xl btn-secondary d-block"
+					>
+						Volver atras
+					</button>
 				</div>
 			</>
 		)
